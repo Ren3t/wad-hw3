@@ -8,8 +8,8 @@
                     <Courses :show="coursesActive" @courseAdded="updateUserGPA($event)"></Courses>
                 </div>
                 <div class="controls">
-                    <button id="profile-button" @click="togglePill" :class="{pill: true, active: profileActive}">Profile</button>
-                    <button id="courses-button" @click="togglePill" :class="{pill: true, active: coursesActive}">Courses</button>
+                    <button id="profile-button" v-on:click="togglePill" :class="{pill: true, active: profileActive}">Profile</button>
+                    <button id="courses-button" v-on:click="togglePill" :class="{pill: true, active: coursesActive}">Courses</button>
                 </div>
             </section>
         </section>
@@ -32,7 +32,13 @@
             Profile,
             Courses,
         },
-
+        data: function() {
+            return{
+                coursesActive : true,
+                profileActive : false
+            };
+        
+        },
         methods: {
             togglePill: function(){
                 this.coursesActive = !this.coursesActive;

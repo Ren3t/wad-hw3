@@ -20,10 +20,16 @@
 </template>
 
 <script>
+    import User from "../models/User"
     export default {
         name: "ProfileTab",
+        data: function(){
+            return{
+                user: new User("John","Doe","11/10/1990","Software Engineering",2.75)
+            }
+        },
         props: {
-            userProps: Object,
+            show: Boolean
         }
     }
 </script>
