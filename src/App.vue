@@ -5,11 +5,11 @@
             <section id="main">
                 <div class="content">
                     <Profile :user="user" :show="profileActive"/>
-                    <Courses :show="coursesActive"></Courses>
+                    <Courses :courses="courses" :show="coursesActive"/>
                 </div>
                 <div class="controls">
-                    <button id="profile-button" v-on:click="togglePill" :class="{pill: true, active: profileActive}">Profile</button>
-                    <button id="courses-button" v-on:click="togglePill" :class="{pill: true, active: coursesActive}">Courses</button>
+                    <button id="profile-button" @click="togglePill" :class="{pill: true, active: profileActive}">Profile</button>
+                    <button id="courses-button" @click="togglePill" :class="{pill: true, active: coursesActive}">Courses</button>
                 </div>
             </section>
         </section>
@@ -22,7 +22,9 @@
     import Footer from './components/Footer.vue'
     import Profile from './components/ProfileTab.vue'
     import Courses from './components/CoursesTab.vue'
-
+    import User from "./models/User"
+    import Course from './models/Course'
+    
 
     export default {
         name: 'app',
@@ -34,8 +36,14 @@
         },
         data: function() {
             return{
-                coursesActive : true,
-                profileActive : false
+                user: new User("John","Doe","11/10/1990","Software Engineering","2.75"),
+                courses :[
+                    new Course("Agile software development", "1", "82"),
+                    new Course("System modeling", "1", "85"),
+                    new Course("Object-oriented programming", "2", "99"),
+                    new Course("Estonian language Level A2", "2", "65") ],
+                coursesActive : false,
+                profileActive : true
             };
         
         },
@@ -43,14 +51,35 @@
             togglePill: function(){
                 this.coursesActive = !this.coursesActive;
                 this.profileActive = !this.profileActive;
+                this.user.gpa = this.changeGPA();
             },
-            UserGPA: function(){
-
-                
-                return 0;
+            changeGPA: function(){
+                var points = 0;
+                for(var i = 0;i<this.courses.length;i++){
+                    if(this.courses[i].grade >90){
+                        points += 4;
+                    }
+                    else if(this.courses[i].grade >80){
+                        points += 3;
+                    }
+                    else if(this.courses[i].grade >70){
+                        points += 2;
+                    }
+                    else if(this.courses[i].grade >60){
+                        points += 1;
+                    }
+                    else if(this.courses[i].grade >50){
+                        points += 0.5;
+                    }
+                    else{
+                        points += 0;
+                    }
+                }
+                var gpa = points/this.courses.length;
+                return gpa
+                }
             }
         }
-    }
 </script>
 
 <style>

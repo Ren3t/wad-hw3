@@ -20,16 +20,16 @@
 </template>
 
 <script>
-    import User from "../models/User"
     export default {
         name: "ProfileTab",
-        data: function(){
-            return{
-                user: new User("John","Doe","11/10/1990","Software Engineering",this.$root.UserGPA())
+        methods: {
+            returnGPA: function(){
+                return "1";
             }
         },
         props: {
-            show: Boolean
+            show: Boolean,
+            user: Object
         }
     }
 </script>

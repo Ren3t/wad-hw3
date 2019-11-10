@@ -38,16 +38,6 @@
     import Course from '../models/Course'
     export default {
         name: 'CoursesTab',
-        data: function() {
-            return {
-                courses :[
-                    new Course("Agile software development", "1", "82"),
-                    new Course("System modeling", "1", "85"),
-                    new Course("Object-oriented programming", "2", "99"),
-                    new Course("Estonian language Level A2", "2", "65") ]
-
-            }
-        },
         methods:{
             saveCourse: function(){
                 this.courses.push(new Course(
@@ -67,7 +57,8 @@
         },
         props: {
             show: Boolean,
-            showPlus: Boolean
+            showPlus: Boolean,
+            courses: Array
         },
     }
 </script>
