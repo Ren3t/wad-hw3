@@ -25,7 +25,7 @@
         name: "ProfileTab",
         data: function(){
             return{
-                user: new User("John","Doe","11/10/1990","Software Engineering",2.75)
+                user: new User("John","Doe","11/10/1990","Software Engineering",this.$root.UserGPA())
             }
         },
         props: {

@@ -5,7 +5,7 @@
             <section id="main">
                 <div class="content">
                     <Profile :user="user" :show="profileActive"/>
-                    <Courses :show="coursesActive" @courseAdded="updateUserGPA($event)"></Courses>
+                    <Courses :show="coursesActive"></Courses>
                 </div>
                 <div class="controls">
                     <button id="profile-button" v-on:click="togglePill" :class="{pill: true, active: profileActive}">Profile</button>
@@ -44,8 +44,10 @@
                 this.coursesActive = !this.coursesActive;
                 this.profileActive = !this.profileActive;
             },
-            updateUserGPA: function(newGPA){
-                this.user.gpa = newGPA;
+            UserGPA: function(){
+
+                
+                return 0;
             }
         }
     }
