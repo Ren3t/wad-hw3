@@ -22,11 +22,6 @@
 <script>
     export default {
         name: "ProfileTab",
-        methods: {
-            returnGPA: function(){
-                return "1";
-            }
-        },
         props: {
             show: Boolean,
             user: Object
