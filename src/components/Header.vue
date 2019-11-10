@@ -1,13 +1,18 @@
 <template>
     <header>
-        <strong>Welcome to your dashboard!</strong>
+        <strong>{{message}}</strong>
     </header>
 </template>
 
 <script>
     export default {
-        name: "Header"
-    };
+        name: "Header",
+        data: function(){
+            return {
+                message:"Welcome to your dashboard!"
+            }
+        }
+    }
 </script>
 
 <style>
